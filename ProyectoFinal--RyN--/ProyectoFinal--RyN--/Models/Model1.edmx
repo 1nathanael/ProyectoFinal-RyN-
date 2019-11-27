@@ -28,9 +28,43 @@
           <Property Name="Salario" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="Id_Permiso" />
+          </Key>
+          <Property Name="Id_Permiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Inicio_Permiso" Type="datetime" />
+          <Property Name="Fin_Permiso" Type="datetime" />
+          <Property Name="Comentario" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Salida_Empleado">
+          <Key>
+            <PropertyRef Name="Id_Salida" />
+          </Key>
+          <Property Name="Id_Salida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Tipo_Salida" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Motivo" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha_Salida" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Vacaciones">
+          <Key>
+            <PropertyRef Name="Id_vacaciones" />
+          </Key>
+          <Property Name="Id_vacaciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Inicio_Vacaciones" Type="datetime" />
+          <Property Name="Fin_Vacaciones" Type="datetime" />
+          <Property Name="Año" Type="int" />
+          <Property Name="Comentario" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityContainer Name="RecursosHumanosModelStoreContainer">
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salida_Empleado" EntityType="Self.Salida_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -54,6 +88,9 @@
         <EntityContainer Name="RecursosHumanosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
           <EntitySet Name="Departamento" EntityType="RecursosHumanosModel.Departamento" />
+          <EntitySet Name="Permiso" EntityType="RecursosHumanosModel.Permiso" />
+          <EntitySet Name="Salida_Empleado" EntityType="RecursosHumanosModel.Salida_Empleado" />
+          <EntitySet Name="Vacaciones" EntityType="RecursosHumanosModel.Vacaciones" />
         </EntityContainer>
         <EntityType Name="Departamento">
           <Key>
@@ -62,6 +99,37 @@
           <Property Name="Id_Depto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo_Depto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Nombre_Depto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="Id_Permiso" />
+          </Key>
+          <Property Name="Id_Permiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Inicio_Permiso" Type="DateTime" Precision="3" />
+          <Property Name="Fin_Permiso" Type="DateTime" Precision="3" />
+          <Property Name="Comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Salida_Empleado">
+          <Key>
+            <PropertyRef Name="Id_Salida" />
+          </Key>
+          <Property Name="Id_Salida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Tipo_Salida" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Salida" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Vacaciones">
+          <Key>
+            <PropertyRef Name="Id_vacaciones" />
+          </Key>
+          <Property Name="Id_vacaciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Inicio_Vacaciones" Type="DateTime" Precision="3" />
+          <Property Name="Fin_Vacaciones" Type="DateTime" Precision="3" />
+          <Property Name="Año" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -91,6 +159,40 @@
                 <ScalarProperty Name="Nombre_Depto" ColumnName="Nombre_Depto" />
                 <ScalarProperty Name="Codigo_Depto" ColumnName="Codigo_Depto" />
                 <ScalarProperty Name="Id_Depto" ColumnName="Id_Depto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permiso">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Permiso">
+              <MappingFragment StoreEntitySet="Permiso">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Fin_Permiso" ColumnName="Fin_Permiso" />
+                <ScalarProperty Name="Inicio_Permiso" ColumnName="Inicio_Permiso" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Permiso" ColumnName="Id_Permiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salida_Empleado">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Salida_Empleado">
+              <MappingFragment StoreEntitySet="Salida_Empleado">
+                <ScalarProperty Name="Fecha_Salida" ColumnName="Fecha_Salida" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Tipo_Salida" ColumnName="Tipo_Salida" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Salida" ColumnName="Id_Salida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacaciones">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Vacaciones">
+              <MappingFragment StoreEntitySet="Vacaciones">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Fin_Vacaciones" ColumnName="Fin_Vacaciones" />
+                <ScalarProperty Name="Inicio_Vacaciones" ColumnName="Inicio_Vacaciones" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_vacaciones" ColumnName="Id_vacaciones" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
