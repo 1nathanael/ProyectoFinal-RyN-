@@ -24,5 +24,15 @@ namespace ProyectoFinal__RyN__.Models
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         public Nullable<decimal> Salario { get; set; }
         public bool Status { get; set; }
+
+        //Aqui debajo debes agregar un public para departamento(Parecido al de cargo)
+        
+
+       //Metodo Cargo 
+        public Cargo Cargo { get; set; }
+        public List<Licencia> Licencias { get; set; }
+        public List<Permiso> Permisos { get; set; }
+       
+        public List<Vacaciones> Vacaciones { get; set; }
     }
 }
