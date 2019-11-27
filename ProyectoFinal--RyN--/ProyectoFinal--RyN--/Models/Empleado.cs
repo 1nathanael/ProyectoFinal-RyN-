@@ -31,6 +31,7 @@ namespace ProyectoFinal__RyN__.Models
 
         //Aqui debajo debes agregar un public para departamento(Parecido al de cargo)
         
+        public Departamento Departamento { get; set; }
 
        //Metodo Cargo 
         
