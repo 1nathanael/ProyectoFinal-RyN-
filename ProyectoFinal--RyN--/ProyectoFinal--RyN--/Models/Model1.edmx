@@ -46,6 +46,15 @@
           <Property Name="Motivo" Type="varchar" MaxLength="100" />
           <Property Name="Comentario" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="Id_Nomina" />
+          </Key>
+          <Property Name="Id_Nomina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Año" Type="int" />
+          <Property Name="Mes" Type="int" />
+          <Property Name="MontoTotal" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
         <EntityType Name="Permiso">
           <Key>
             <PropertyRef Name="Id_Permiso" />
@@ -82,6 +91,7 @@
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Licencia" EntityType="Self.Licencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomina" EntityType="Self.Nomina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salida_Empleado" EntityType="Self.Salida_Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
@@ -113,6 +123,7 @@
           <EntitySet Name="Vacaciones" EntityType="RecursosHumanosModel.Vacaciones" />
           <EntitySet Name="Cargo" EntityType="RecursosHumanosModel.Cargo" />
           <EntitySet Name="Licencia" EntityType="RecursosHumanosModel.Licencia" />
+          <EntitySet Name="Nomina" EntityType="RecursosHumanosModel.Nomina" />
         </EntityContainer>
         <EntityType Name="Departamento">
           <Key>
@@ -170,6 +181,15 @@
           <Property Name="Fin_Licencia" Type="DateTime" Precision="3" />
           <Property Name="Motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Comentario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="Id_Nomina" />
+          </Key>
+          <Property Name="Id_Nomina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Año" Type="Int32" />
+          <Property Name="Mes" Type="Int32" />
+          <Property Name="MontoTotal" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -253,6 +273,16 @@
                 <ScalarProperty Name="Inicio_Licencia" ColumnName="Inicio_Licencia" />
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
                 <ScalarProperty Name="Id_Licensia" ColumnName="Id_Licensia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nomina">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Nomina">
+              <MappingFragment StoreEntitySet="Nomina">
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Id_Nomina" ColumnName="Id_Nomina" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -132,6 +132,7 @@
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LicenciaController.cs" />
+    <Compile Include="Controllers\NominaController.cs" />
     <Compile Include="Controllers\PermisoController.cs" />
     <Compile Include="Controllers\Salida_EmpleadoController.cs" />
     <Compile Include="Controllers\VacacionesController.cs" />
@@ -164,6 +165,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Nomina.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Permiso.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -259,6 +263,11 @@
     <Content Include="Views\Licencia\Details.cshtml" />
     <Content Include="Views\Licencia\Edit.cshtml" />
     <Content Include="Views\Licencia\Index.cshtml" />
+    <Content Include="Views\Nomina\Create.cshtml" />
+    <Content Include="Views\Nomina\Delete.cshtml" />
+    <Content Include="Views\Nomina\Details.cshtml" />
+    <Content Include="Views\Nomina\Edit.cshtml" />
+    <Content Include="Views\Nomina\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
