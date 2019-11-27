@@ -35,6 +35,17 @@
           <Property Name="Salario" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Licencia">
+          <Key>
+            <PropertyRef Name="Id_Licensia" />
+          </Key>
+          <Property Name="Id_Licensia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Inicio_Licencia" Type="datetime" />
+          <Property Name="Fin_Licencia" Type="datetime" />
+          <Property Name="Motivo" Type="varchar" MaxLength="100" />
+          <Property Name="Comentario" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Permiso">
           <Key>
             <PropertyRef Name="Id_Permiso" />
@@ -70,6 +81,7 @@
           <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Licencia" EntityType="Self.Licencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salida_Empleado" EntityType="Self.Salida_Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
@@ -100,6 +112,7 @@
           <EntitySet Name="Salida_Empleado" EntityType="RecursosHumanosModel.Salida_Empleado" />
           <EntitySet Name="Vacaciones" EntityType="RecursosHumanosModel.Vacaciones" />
           <EntitySet Name="Cargo" EntityType="RecursosHumanosModel.Cargo" />
+          <EntitySet Name="Licencia" EntityType="RecursosHumanosModel.Licencia" />
         </EntityContainer>
         <EntityType Name="Departamento">
           <Key>
@@ -146,6 +159,17 @@
           </Key>
           <Property Name="Id_Cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Cargo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Licencia">
+          <Key>
+            <PropertyRef Name="Id_Licensia" />
+          </Key>
+          <Property Name="Id_Licensia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Inicio_Licencia" Type="DateTime" Precision="3" />
+          <Property Name="Fin_Licencia" Type="DateTime" Precision="3" />
+          <Property Name="Motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -217,6 +241,18 @@
               <MappingFragment StoreEntitySet="Cargo">
                 <ScalarProperty Name="Nombre_Cargo" ColumnName="Nombre_Cargo" />
                 <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Licencia">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Licencia">
+              <MappingFragment StoreEntitySet="Licencia">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Fin_Licencia" ColumnName="Fin_Licencia" />
+                <ScalarProperty Name="Inicio_Licencia" ColumnName="Inicio_Licencia" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Licensia" ColumnName="Id_Licensia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

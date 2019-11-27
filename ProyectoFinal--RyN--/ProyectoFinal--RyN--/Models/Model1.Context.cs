@@ -31,5 +31,6 @@ namespace ProyectoFinal__RyN__.Models
         public virtual DbSet<Salida_Empleado> Salida_Empleado { get; set; }
         public virtual DbSet<Vacaciones> Vacaciones { get; set; }
         public virtual DbSet<Cargo> Cargo { get; set; }
+        public virtual DbSet<Licencia> Licencia { get; set; }
     }
 }
