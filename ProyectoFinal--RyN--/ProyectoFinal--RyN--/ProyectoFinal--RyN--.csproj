@@ -131,6 +131,7 @@
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PermisoController.cs" />
+    <Compile Include="Controllers\Salida_EmpleadoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +230,11 @@
     <Content Include="Views\Permiso\Details.cshtml" />
     <Content Include="Views\Permiso\Edit.cshtml" />
     <Content Include="Views\Permiso\Index.cshtml" />
+    <Content Include="Views\Salida_Empleado\Create.cshtml" />
+    <Content Include="Views\Salida_Empleado\Delete.cshtml" />
+    <Content Include="Views\Salida_Empleado\Details.cshtml" />
+    <Content Include="Views\Salida_Empleado\Edit.cshtml" />
+    <Content Include="Views\Salida_Empleado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
