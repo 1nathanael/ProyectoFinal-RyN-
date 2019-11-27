@@ -26,5 +26,6 @@ namespace ProyectoFinal__RyN__.Models
         }
     
         public virtual DbSet<Empleado> Empleado { get; set; }
+        public virtual DbSet<Departamento> Departamento { get; set; }
     }
 }
