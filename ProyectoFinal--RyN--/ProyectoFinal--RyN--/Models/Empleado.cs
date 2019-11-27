@@ -33,10 +33,11 @@ namespace ProyectoFinal__RyN__.Models
         
 
        //Metodo Cargo 
+        
         public Cargo Cargo { get; set; }
         public List<Licencia> Licencias { get; set; }
         public List<Permiso> Permisos { get; set; }
-       
         public List<Vacaciones> Vacaciones { get; set; }
+        
     }
 }
