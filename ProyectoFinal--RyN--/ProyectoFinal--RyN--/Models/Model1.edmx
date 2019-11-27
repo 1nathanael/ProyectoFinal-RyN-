@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="RecursosHumanosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="Id_Cargo" />
+          </Key>
+          <Property Name="Id_Cargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Cargo" Type="varchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="Departamento">
           <Key>
             <PropertyRef Name="Id_Depto" />
@@ -60,6 +67,7 @@
           <Property Name="Comentario" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="RecursosHumanosModelStoreContainer">
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
@@ -91,6 +99,7 @@
           <EntitySet Name="Permiso" EntityType="RecursosHumanosModel.Permiso" />
           <EntitySet Name="Salida_Empleado" EntityType="RecursosHumanosModel.Salida_Empleado" />
           <EntitySet Name="Vacaciones" EntityType="RecursosHumanosModel.Vacaciones" />
+          <EntitySet Name="Cargo" EntityType="RecursosHumanosModel.Cargo" />
         </EntityContainer>
         <EntityType Name="Departamento">
           <Key>
@@ -130,6 +139,13 @@
           <Property Name="Fin_Vacaciones" Type="DateTime" Precision="3" />
           <Property Name="Año" Type="Int32" />
           <Property Name="Comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="Id_Cargo" />
+          </Key>
+          <Property Name="Id_Cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Cargo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -193,6 +209,14 @@
                 <ScalarProperty Name="Inicio_Vacaciones" ColumnName="Inicio_Vacaciones" />
                 <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
                 <ScalarProperty Name="Id_vacaciones" ColumnName="Id_vacaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargo">
+            <EntityTypeMapping TypeName="RecursosHumanosModel.Cargo">
+              <MappingFragment StoreEntitySet="Cargo">
+                <ScalarProperty Name="Nombre_Cargo" ColumnName="Nombre_Cargo" />
+                <ScalarProperty Name="Id_Cargo" ColumnName="Id_Cargo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
