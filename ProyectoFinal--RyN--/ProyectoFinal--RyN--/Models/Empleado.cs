@@ -11,7 +11,8 @@ namespace ProyectoFinal__RyN__.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empleado
     {
         public int Id_Empleado { get; set; }
@@ -21,6 +22,9 @@ namespace ProyectoFinal__RyN__.Models
         public string Telefono { get; set; }
         public Nullable<int> Id_Depto { get; set; }
         public Nullable<int> Id_Cargo { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         public Nullable<decimal> Salario { get; set; }
         public bool Status { get; set; }
