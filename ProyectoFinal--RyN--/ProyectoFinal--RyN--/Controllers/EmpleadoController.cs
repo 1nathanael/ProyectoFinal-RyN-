@@ -38,6 +38,8 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Empleado/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Depto = new SelectList(db.Departamento, "Id_Depto", "Nombre_Depto");
+
             return View();
         }
 
@@ -55,6 +57,8 @@ namespace ProyectoFinal__RyN__.Controllers
                 return RedirectToAction("Index");
             }
 
+
+            ViewBag.Id_Depto = new SelectList(db.Departamento, "Id_Depto", "Nombre_Depto", empleado.Id_Depto);
             return View(empleado);
         }
 
@@ -86,6 +90,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Depto = new SelectList(db.Departamento, "Id_Depto", "Nombre_Depto", empleado.Id_Depto);
             return View(empleado);
         }
 
@@ -101,6 +106,7 @@ namespace ProyectoFinal__RyN__.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Depto = new SelectList(db.Departamento, "Id_Depto", "Nombre_Depto", empleado.Id_Depto);
             return View(empleado);
         }
 
