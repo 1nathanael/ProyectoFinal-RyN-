@@ -17,9 +17,10 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Permiso
         public ActionResult Index()
         {
-            return View(db.Permiso.ToList());
+            var permisos = db.Permiso.Include(p => p.Empleado);
+            return View(permisos.ToList());
         }
-
+        
         // GET: Permiso/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,6 +39,7 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Permiso/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado");
             return View();
         }
 
@@ -54,7 +56,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado",permiso.Id_Empleado);
             return View(permiso);
         }
 
@@ -70,6 +72,7 @@ namespace ProyectoFinal__RyN__.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", permiso.Id_Empleado);
             return View(permiso);
         }
 
@@ -86,6 +89,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", permiso.Id_Empleado);
             return View(permiso);
         }
 
