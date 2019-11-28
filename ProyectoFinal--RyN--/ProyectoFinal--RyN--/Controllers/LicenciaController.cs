@@ -17,7 +17,8 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Licencia
         public ActionResult Index()
         {
-            return View(db.Licencia.ToList());
+            var Licencia = db.Licencia.Include(l => l.Empleado);
+            return View(Licencia.ToList());
         }
 
         // GET: Licencia/Details/5
@@ -54,7 +55,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Codigo_Empleado", licencia.Id_Empleado);
             return View(licencia);
         }
 
@@ -70,6 +71,7 @@ namespace ProyectoFinal__RyN__.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Codigo_Empleado", licencia.Id_Empleado);
             return View(licencia);
         }
 
@@ -86,6 +88,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Codigo_Empleado", licencia.Id_Empleado);
             return View(licencia);
         }
 

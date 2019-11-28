@@ -20,5 +20,7 @@ namespace ProyectoFinal__RyN__.Models
         public Nullable<System.DateTime> Fin_Licencia { get; set; }
         public string Motivo { get; set; }
         public string Comentario { get; set; }
+
+        public Empleado Empleado { get; set; }
     }
 }
