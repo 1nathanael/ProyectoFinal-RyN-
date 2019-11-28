@@ -18,6 +18,7 @@ namespace ProyectoFinal__RyN__.Controllers
         public ActionResult Index()
         {
             var Licencia = db.Licencia.Include(l => l.Empleado);
+
             return View(Licencia.ToList());
         }
 
