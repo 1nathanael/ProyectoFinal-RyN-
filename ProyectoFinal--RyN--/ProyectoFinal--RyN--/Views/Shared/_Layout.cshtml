@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -41,6 +41,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informes <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li> @Html.ActionLink("Lista de Empleados", "Index", "Empleado")</li>
                             <li> @Html.ActionLink("Lista de nominas", "Index", "Nomina")</li>
                             <li> @Html.ActionLink("Empleados Activos", "EmpActivos", "Empleado")</li>
                             <li> @Html.ActionLink("Empleados Inactivos", "EmpInactivos", "Empleado")</li>
@@ -50,12 +51,13 @@
                             <li> @Html.ActionLink("Salida Empleados por Mes", "Index", "Salida_Empleado")</li>
                             <li> @Html.ActionLink("Listado de Permisos", "index", "Permiso")</li>
 
-                           
+
 
                         </ul>
 
                     <li>
-                    @Html.ActionLink("Acerca de", "About", "Home")
+                        <a href="~/Home/About"  role="button" aria-haspopup="true" aria-expanded="false">Sobre Nosotros </a>
+                        @*@Html.ActionLink("Acerca de", "About", "Home")*@
                     </li>\
 
 

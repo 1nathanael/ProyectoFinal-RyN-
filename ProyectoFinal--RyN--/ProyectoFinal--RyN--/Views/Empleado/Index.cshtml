@@ -67,12 +67,22 @@
                 @Html.DisplayFor(modelItem => item.Salario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem  => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id_Empleado }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id_Empleado }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id_Empleado })
+
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id_Empleado, @class = ".glyphicon .glyphicon-trash" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id_Empleado }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id_Empleado })*@
+                <a class="btn btn-default btn-info" href="~/Empleado/Edit/@item.Id_Empleado" title="Editar">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-default btn-warning" href="~/Empleado/Details/@item.Id_Empleado" title="Detalles">
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                </a>
+                <a class="btn btn-default btn-danger" href="~/Empleado/Delete/@item.Id_Empleado" title="Eliminar">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
             </td>
         </tr>
 
@@ -80,5 +90,9 @@
 
 </table>
 <p>
-    @Html.ActionLink("Registrar Nuevo Empleado", "Create")
+        
+    <a class="btn btn-default btn-success" href="~/Empleado/Create/">
+        Registrar Nuevo Empleado
+        
+    </a>
 </p>

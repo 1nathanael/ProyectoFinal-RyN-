@@ -18,7 +18,7 @@ namespace ProyectoFinal__RyN__.Controllers
         public ActionResult Index()
         {
             var permisos = db.Permiso.Include(p => p.Empleado);
-            return View(permisos.ToList());
+            return View(db.Permiso.ToList());
         }
         
         // GET: Permiso/Details/5

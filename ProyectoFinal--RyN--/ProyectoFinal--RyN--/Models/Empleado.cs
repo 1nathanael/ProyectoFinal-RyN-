@@ -35,7 +35,7 @@ namespace ProyectoFinal__RyN__.Models
         public Nullable<int> Id_Cargo { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         public Nullable<decimal> Salario { get; set; }
         public bool Status { get; set; }
