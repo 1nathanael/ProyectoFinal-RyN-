@@ -18,7 +18,7 @@ namespace ProyectoFinal__RyN__.Controllers
         public ActionResult Index()
         {
             var SE = db.Salida_Empleado.Include(s => s.Empleado);
-            return View(SE.ToList());
+            return View(db.Salida_Empleado.ToList());
         }
 
         // GET: Salida_Empleado/Details/5

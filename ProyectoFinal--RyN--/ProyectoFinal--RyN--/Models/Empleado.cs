@@ -16,9 +16,20 @@ namespace ProyectoFinal__RyN__.Models
     public partial class Empleado
     {
         public int Id_Empleado { get; set; }
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [StringLength(4)]
         public string Codigo_Empleado { get; set; }
+
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [StringLength(50)]
         public string Nombre_Empleado { get; set; }
+
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [StringLength(50)]
         public string Apellido { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [StringLength(10)]
         public string Telefono { get; set; }
         public Nullable<int> Id_Depto { get; set; }
         public Nullable<int> Id_Cargo { get; set; }
