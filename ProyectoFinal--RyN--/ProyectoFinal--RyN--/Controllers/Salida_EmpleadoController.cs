@@ -17,7 +17,8 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Salida_Empleado
         public ActionResult Index()
         {
-            return View(db.Salida_Empleado.ToList());
+            var SE = db.Salida_Empleado.Include(s => s.Empleado);
+            return View(SE.ToList());
         }
 
         // GET: Salida_Empleado/Details/5
@@ -38,6 +39,9 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Salida_Empleado/Create
         public ActionResult Create()
         {
+            ViewBag.IdSalida_Empleado = new SelectList(from x in db.Empleado
+                                                       where x.Status == true
+                                                       select x, "Id_Empleado", "Nombre_Empleado");
             return View();
         }
 
@@ -50,11 +54,14 @@ namespace ProyectoFinal__RyN__.Controllers
         {
             if (ModelState.IsValid)
             {
+                Empleado emp;
                 db.Salida_Empleado.Add(salida_Empleado);
-                db.SaveChanges();
+                emp = db.Empleado.Find(salida_Empleado.Id_Empleado);
+                emp.Status = false;
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", salida_Empleado.Id_Empleado);
             return View(salida_Empleado);
         }
 
@@ -70,6 +77,7 @@ namespace ProyectoFinal__RyN__.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", salida_Empleado.Id_Empleado);
             return View(salida_Empleado);
         }
 
@@ -86,6 +94,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", salida_Empleado.Id_Empleado);
             return View(salida_Empleado);
         }
 

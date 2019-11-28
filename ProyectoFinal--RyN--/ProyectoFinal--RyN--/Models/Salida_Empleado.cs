@@ -19,5 +19,7 @@ namespace ProyectoFinal__RyN__.Models
         public string Tipo_Salida { get; set; }
         public string Motivo { get; set; }
         public Nullable<System.DateTime> Fecha_Salida { get; set; }
+
+        public Empleado Empleado { get; set; }
     }
 }
