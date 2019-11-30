@@ -11,10 +11,13 @@ namespace ProyectoFinal__RyN__.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cargo
     {
         public int Id_Cargo { get; set; }
+
+        [Display(Name="Nombre del Cargo")]
         public string Nombre_Cargo { get; set; }
     }
 }
