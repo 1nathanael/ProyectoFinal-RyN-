@@ -99,9 +99,17 @@
     </div>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Lista de Empleados", "Index", new { @class= "btn btn-primary"})
-</div>
+</div>*@
+    <p>
+
+        <a class="btn btn-default btn-info" href="~/Empleado/Index/">
+            Ir a la lista de Empleados
+
+        </a>
+    </p>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

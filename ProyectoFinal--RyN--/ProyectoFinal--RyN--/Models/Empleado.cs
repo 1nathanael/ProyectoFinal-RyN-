@@ -15,11 +15,16 @@ namespace ProyectoFinal__RyN__.Models
 
     public partial class Empleado
     {
+
+        [Display(Name = "Empleado")]
         public int Id_Empleado { get; set; }
+
+        [Display(Name = "Codigo")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(4)]
         public string Codigo_Empleado { get; set; }
 
+        [Display(Name = "Nombre")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(50)]
         public string Nombre_Empleado { get; set; }
@@ -31,13 +36,19 @@ namespace ProyectoFinal__RyN__.Models
         [DataType(DataType.PhoneNumber)]
         [StringLength(10)]
         public string Telefono { get; set; }
+
+
         public Nullable<int> Id_Depto { get; set; }
         public Nullable<int> Id_Cargo { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+
+        [Display(Name = "Fecha de ingreso")]
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         public Nullable<decimal> Salario { get; set; }
+
+        [Display(Name ="Activo")]
         public bool Status { get; set; }
 
         //Aqui debajo debes agregar un public para departamento(Parecido al de cargo)

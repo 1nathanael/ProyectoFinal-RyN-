@@ -17,7 +17,7 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Salida_Empleado
         public ActionResult Index()
         {
-            var SE = db.Salida_Empleado.Include(s => s.Empleado);
+            //var SE = db.Salida_Empleado.Include(s => s.Empleado);
             return View(db.Salida_Empleado.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Salida_Empleado/Create
         public ActionResult Create()
         {
-            ViewBag.IdSalida_Empleado = new SelectList(from x in db.Empleado
+            ViewBag.Id_Empleado = new SelectList(from x in db.Empleado
                                                        where x.Status == true
                                                        select x, "Id_Empleado", "Nombre_Empleado");
             return View();
