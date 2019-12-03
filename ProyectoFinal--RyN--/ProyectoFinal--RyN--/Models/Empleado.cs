@@ -45,7 +45,8 @@ namespace ProyectoFinal__RyN__.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 
         [Display(Name = "Fecha de ingreso")]
-        public Nullable<System.DateTime> FechaIngreso { get; set; }
+        public DateTime FechaIngreso { get; set; }
+
         public Nullable<decimal> Salario { get; set; }
 
         [Display(Name ="Activo")]

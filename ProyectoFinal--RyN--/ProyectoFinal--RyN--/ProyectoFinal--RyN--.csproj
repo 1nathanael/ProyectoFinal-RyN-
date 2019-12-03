@@ -277,6 +277,8 @@
     <Content Include="Views\Empleado\Index.cshtml" />
     <Content Include="Views\Nomina\HomeNomina.cshtml" />
     <Content Include="Views\Nomina\CalcuNomina.cshtml" />
+    <Content Include="Views\Empleado\EntradaMes.cshtml" />
+    <Content Include="Views\Empleado\EntradaMesLista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

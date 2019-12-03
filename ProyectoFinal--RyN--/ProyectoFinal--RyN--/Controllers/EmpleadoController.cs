@@ -133,5 +133,37 @@ namespace ProyectoFinal__RyN__.Controllers
         }
 
         //INFORMES
+
+        public ActionResult EmpInactivos()
+        {
+            var empleados = db.Empleado.Where(x => x.Status == false).Include(c => c.Cargo).Include(d => d.Departamento);
+            return View(empleados);
+        }
+
+        public ActionResult EmpActivos()
+        {
+            var empleados = db.Empleado.Where(x => x.Status == true).Include(c => c.Cargo).Include(d => d.Departamento);
+            return View(empleados);
+        }
+
+        public ActionResult EntradaMes()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EntradaMesLista(int ano, int mes)
+        {
+            var empleados = db.Empleado.Where(x => x.FechaIngreso.Year == ano && x.FechaIngreso.Month == mes).Include(c => c.Cargo).Include(d => d.Departamento)ToList();
+            if (empleados != null)
+            {
+                return View(empleados);
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
     }
 }
