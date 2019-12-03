@@ -17,7 +17,35 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Nomina
         public ActionResult Index()
         {
-            return View(db.Nomina.ToList());
+            var nominas = db.Nomina.ToList();
+            return View(nominas);
+        }
+
+        public ActionResult HomeNomina()
+        {
+            ViewBag.CalcuNomina = db.Empleado.Where(x => x.Status == true).Sum(x => x.Salario);
+            return View();
+        }
+
+        public ActionResult CalcuNomina()
+        {
+            var aux = db.Empleado.Where(x => x.Status == true).Sum(x => x.Salario);
+            Nomina nomina = new Nomina
+            {
+                Mes = DateTime.Now.Month,
+                Año = DateTime.Now.Year,
+                MontoTotal = aux
+            };
+            if (db.Nomina.FirstOrDefault(x => x.Año == nomina.Año  && x.Mes == nomina.Mes) != null)
+            {
+                return View();
+            }
+            else
+            {
+                db.Nomina.Add(nomina);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
         // GET: Nomina/Details/5

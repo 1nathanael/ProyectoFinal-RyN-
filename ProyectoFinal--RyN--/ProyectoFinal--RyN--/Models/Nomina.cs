@@ -18,5 +18,7 @@ namespace ProyectoFinal__RyN__.Models
         public Nullable<int> Año { get; set; }
         public Nullable<int> Mes { get; set; }
         public Nullable<decimal> MontoTotal { get; set; }
+
+        public Empleado Empleado { get; set; }
     }
 }
