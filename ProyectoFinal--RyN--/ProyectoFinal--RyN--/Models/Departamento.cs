@@ -11,7 +11,8 @@ namespace ProyectoFinal__RyN__.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Departamento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,11 @@ namespace ProyectoFinal__RyN__.Models
 
         
         public int Id_Depto { get; set; }
+
+        [Display(Name ="Codigo de Departamento")]
         public string Codigo_Depto { get; set; }
+
+        [Display(Name = "Nombre de Departamento")]
         public string Nombre_Depto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

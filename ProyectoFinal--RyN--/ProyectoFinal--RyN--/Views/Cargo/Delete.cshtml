@@ -24,9 +24,12 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default btn-info" /> |
-            @Html.ActionLink("Ir a la lista de Cargos", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Eliminar" class="btn btn-default btn-info" /> |
+        <a class="btn btn-default btn-success" href="~/Cargo/Index/">
+            Listado de Cargos
+
+        </a>
+    </div>
     }
 </div>
