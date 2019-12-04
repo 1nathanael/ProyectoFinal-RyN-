@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
+<br />  
+<h2>Crear un nuevo Permiso</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,11 +12,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Permiso</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Empleado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Empleado,"Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Empleado",(IEnumerable<SelectListItem>)ViewBag.Id_Empleado, htmlAttributes: new { @class= "form-control"})
                 @Html.ValidationMessageFor(model => model.Id_Empleado, "", new { @class = "text-danger" })
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Inicio_Permiso, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Inicio_Permiso,"Fecha Inicio de Permiso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Inicio_Permiso, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Inicio_Permiso, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fin_Permiso, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Fin_Permiso, "Fecha Fin de Permiso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Fin_Permiso, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Fin_Permiso, "", new { @class = "text-danger" })
@@ -55,9 +55,9 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Listado de permisos", "Index")
-</div>
+    <p>
+        @Html.ActionLink("Listado de Permisos", "Index", "Permiso", new { @class = "btn btn-primary" })
+    </p>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -3,12 +3,10 @@
 @{
     ViewBag.Title = "Index";
 }
+<br />
+<h2>Listado de Permisos</h2>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Crear Nuevo permiso", "Create", "Permiso", new { @class="btn btn-primary"})
-</p>
 <table class="table">
     <tr>
         <th>
@@ -61,3 +59,6 @@
 }
 
 </table>
+<p>
+    @Html.ActionLink("Crear Nuevo permiso", "Create", "Permiso", new { @class = "btn btn-primary" })
+</p>
