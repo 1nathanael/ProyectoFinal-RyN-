@@ -3,12 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
+<br />  
+<h2>Listado de Licencias</h2>
 
-<h2>Index</h2>
-
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -41,6 +41,9 @@
             @Html.DisplayFor(modelItem => item.Empleado.Nombre_Empleado)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Inicio_Licencia)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Fin_Licencia)
         </td>
         <td>
@@ -50,11 +53,27 @@
             @Html.DisplayFor(modelItem => item.Comentario)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Licensia }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Licensia }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Licensia })
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id_Licensia }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id_Licensia }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id_Licensia })*@
+            <a class="btn btn-default btn-info" href="~/Licencia/Edit/@item.Id_Licensia" title="Editar">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-default btn-warning" href="~/Licencia/Details/@item.Id_Licensia" title="Detalles">
+                <i class="glyphicon glyphicon-list-alt"></i>
+            </a>
+            <a class="btn btn-default btn-danger" href="~/Licencia/Delete/@item.Id_Licensia" title="Eliminar">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
         </td>
     </tr>
 }
 
 </table>
+<p>
+
+    <a class="btn btn-default btn-success" href="~/Licencia/Create/">
+        Registrar Nuevo Licencia
+
+    </a>
+</p>

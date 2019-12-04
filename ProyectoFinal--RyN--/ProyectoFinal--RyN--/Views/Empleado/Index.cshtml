@@ -22,10 +22,10 @@
             @Html.DisplayNameFor(model => model.Telefono)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_Depto)
+            @Html.DisplayNameFor(model => model.Departamento.Nombre_Depto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_Cargo)
+            @Html.DisplayNameFor(model => model.Cargo.Nombre_Cargo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FechaIngreso)
@@ -55,10 +55,10 @@
                 @Html.DisplayFor(modelItem => item.Telefono)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Id_Depto)
+                @Html.DisplayFor(modelItem => item.Departamento.Nombre_Depto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Id_Cargo)
+                @Html.DisplayFor(modelItem => item.Cargo.Nombre_Cargo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaIngreso)

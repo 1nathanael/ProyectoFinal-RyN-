@@ -245,11 +245,6 @@
     <Content Include="Views\Permiso\Details.cshtml" />
     <Content Include="Views\Permiso\Edit.cshtml" />
     <Content Include="Views\Permiso\Index.cshtml" />
-    <Content Include="Views\Salida_Empleado\Create.cshtml" />
-    <Content Include="Views\Salida_Empleado\Delete.cshtml" />
-    <Content Include="Views\Salida_Empleado\Details.cshtml" />
-    <Content Include="Views\Salida_Empleado\Edit.cshtml" />
-    <Content Include="Views\Salida_Empleado\Index.cshtml" />
     <Content Include="Views\Vacaciones\Create.cshtml" />
     <Content Include="Views\Vacaciones\Delete.cshtml" />
     <Content Include="Views\Vacaciones\Details.cshtml" />
@@ -279,6 +274,11 @@
     <Content Include="Views\Nomina\CalcuNomina.cshtml" />
     <Content Include="Views\Empleado\EntradaMes.cshtml" />
     <Content Include="Views\Empleado\EntradaMesLista.cshtml" />
+    <Content Include="Views\Salida_Empleado\Create.cshtml" />
+    <Content Include="Views\Salida_Empleado\Delete.cshtml" />
+    <Content Include="Views\Salida_Empleado\Details.cshtml" />
+    <Content Include="Views\Salida_Empleado\Edit.cshtml" />
+    <Content Include="Views\Salida_Empleado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

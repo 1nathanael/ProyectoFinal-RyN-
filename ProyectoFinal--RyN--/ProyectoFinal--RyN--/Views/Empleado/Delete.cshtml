@@ -87,9 +87,12 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
-            @Html.ActionLink("Ir a la lista de Empleados", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Eliminar" class="btn btn-default btn-success" /> |
+        <a class="btn btn-default btn-success" href="~/Empleado/Index/">
+            Ir a la lista de Empleados
+
+        </a>
+    </div>
     }
 </div>

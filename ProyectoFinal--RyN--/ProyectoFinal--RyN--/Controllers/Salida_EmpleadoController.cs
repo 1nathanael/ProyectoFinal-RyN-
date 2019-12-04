@@ -17,8 +17,8 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Salida_Empleado
         public ActionResult Index()
         {
-            //var SE = db.Salida_Empleado.Include(s => s.Empleado);
-            return View(db.Salida_Empleado.ToList());
+            var salida_Empleado = db.Salida_Empleado.Include(s => s.Empleado);
+            return View(salida_Empleado.ToList());
         }
 
         // GET: Salida_Empleado/Details/5
@@ -40,8 +40,10 @@ namespace ProyectoFinal__RyN__.Controllers
         public ActionResult Create()
         {
             ViewBag.Id_Empleado = new SelectList(from x in db.Empleado
-                                                       where x.Status == true
-                                                       select x, "Id_Empleado", "Nombre_Empleado");
+                                                 where x.Status == true
+                                                 select x, "Id_Empleado", "Nombre_Empleado");
+
+            //ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Codigo_Empleado");
             return View();
         }
 
@@ -54,14 +56,18 @@ namespace ProyectoFinal__RyN__.Controllers
         {
             if (ModelState.IsValid)
             {
+                //db.Salida_Empleado.Add(salida_Empleado);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
                 Empleado emp;
                 db.Salida_Empleado.Add(salida_Empleado);
                 emp = db.Empleado.Find(salida_Empleado.Id_Empleado);
                 emp.Status = false;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", salida_Empleado.Id_Empleado);
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Codigo_Empleado", salida_Empleado.Id_Empleado);
             return View(salida_Empleado);
         }
 
@@ -77,7 +83,7 @@ namespace ProyectoFinal__RyN__.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", salida_Empleado.Id_Empleado);
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Codigo_Empleado", salida_Empleado.Id_Empleado);
             return View(salida_Empleado);
         }
 
@@ -94,7 +100,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", salida_Empleado.Id_Empleado);
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Codigo_Empleado", salida_Empleado.Id_Empleado);
             return View(salida_Empleado);
         }
 

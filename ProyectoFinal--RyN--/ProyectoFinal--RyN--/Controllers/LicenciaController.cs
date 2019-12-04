@@ -40,6 +40,7 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Licencia/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado");
             return View();
         }
 

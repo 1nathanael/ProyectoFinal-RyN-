@@ -11,16 +11,26 @@ namespace ProyectoFinal__RyN__.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Licencia
     {
         public int Id_Licensia { get; set; }
+        [Display(Name = "Empleado")]
         public Nullable<int> Id_Empleado { get; set; }
+
+        [Display(Name = "Inicio de Licencia")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Inicio_Licencia { get; set; }
+
+        [Display(Name = "Fin de Licencia")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Fin_Licencia { get; set; }
         public string Motivo { get; set; }
         public string Comentario { get; set; }
-
-        public Empleado Empleado { get; set; }
+    
+        public virtual Empleado Empleado { get; set; }
     }
 }

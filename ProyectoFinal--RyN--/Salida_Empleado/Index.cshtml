@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-<br />  
-<h2>Listado de Salida de Empleados</h2>
+
+<h2>Salidas</h2>
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
@@ -18,9 +18,6 @@
             @Html.DisplayNameFor(model => model.Empleado.Nombre_Empleado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Empleado.Apellido)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Tipo_Salida)
         </th>
         <th>
@@ -29,7 +26,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Fecha_Salida)
         </th>
-
         <th></th>
     </tr>
 
@@ -42,9 +38,6 @@
             @Html.DisplayFor(modelItem => item.Empleado.Nombre_Empleado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Empleado.Apellido)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Tipo_Salida)
         </td>
         <td>
@@ -54,18 +47,9 @@
             @Html.DisplayFor(modelItem => item.Fecha_Salida)
         </td>
         <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id_Salida }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id_Salida }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id_Salida })*@
-            @*<a class="btn btn-default btn-info" href="~/Empleado/Edit/@item.Id_Salida" title="Editar">
-                <i class="glyphicon glyphicon-edit"></i>
-            </a>
-            <a class="btn btn-default btn-warning" href="~/Empleado/Details/@item.Id_Salida" title="Detalles">
-                <i class="glyphicon glyphicon-list-alt"></i>
-            </a>
-            <a class="btn btn-default btn-danger" href="~/Empleado/Delete/@item.Id_Salida" title="Eliminar">
-                <i class="glyphicon glyphicon-trash"></i>
-            </a>*@
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Salida }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Salida }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Salida })
         </td>
     </tr>
 }

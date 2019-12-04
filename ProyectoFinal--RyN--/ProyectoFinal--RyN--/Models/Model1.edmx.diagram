@@ -8,11 +8,17 @@
         <EntityTypeShape EntityType="RecursosHumanosModel.Empleado" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RecursosHumanosModel.Departamento" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="RecursosHumanosModel.Permiso" Width="1.5" PointX="3.75" PointY="3.75" />
-        <EntityTypeShape EntityType="RecursosHumanosModel.Salida_Empleado" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Salida_Empleado" Width="1.5" PointX="0.5" PointY="5.875" />
         <EntityTypeShape EntityType="RecursosHumanosModel.Vacaciones" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="RecursosHumanosModel.Cargo" Width="1.5" PointX="6.375" PointY="3.75" />
         <EntityTypeShape EntityType="RecursosHumanosModel.Licencia" Width="1.5" PointX="3.375" PointY="6.75" />
         <EntityTypeShape EntityType="RecursosHumanosModel.Nomina" Width="1.5" PointX="5.375" PointY="6.75" />
+        <AssociationConnector Association="RecursosHumanosModel.fk_cargo" />
+        <AssociationConnector Association="RecursosHumanosModel.fk_departamento" />
+        <AssociationConnector Association="RecursosHumanosModel.fk_permiso" />
+        <AssociationConnector Association="RecursosHumanosModel.fk_licencia" />
+        <AssociationConnector Association="RecursosHumanosModel.fk_salida" />
+        <AssociationConnector Association="RecursosHumanosModel.fk_vacaciones" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

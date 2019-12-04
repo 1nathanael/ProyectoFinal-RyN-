@@ -18,17 +18,19 @@ namespace ProyectoFinal__RyN__.Models
         public int Id_Permiso { get; set; }
         public Nullable<int> Id_Empleado { get; set; }
 
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name ="Inicio del Permiso")]
         public Nullable<System.DateTime> Inicio_Permiso { get; set; }
 
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Fin del Permiso")]
         public Nullable<System.DateTime> Fin_Permiso { get; set; }
-
-        [Required]
         public string Comentario { get; set; }
-
-        public Empleado Empleado{ get; set; }
+    
+        public virtual Empleado Empleado { get; set; }
     }
 }

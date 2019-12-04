@@ -11,57 +11,56 @@ namespace ProyectoFinal__RyN__.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Empleado
     {
-
-        [Display(Name = "Empleado")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Empleado()
+        {
+            this.Permiso = new HashSet<Permiso>();
+            this.Licencia = new HashSet<Licencia>();
+            this.Salida_Empleado = new HashSet<Salida_Empleado>();
+            this.Vacaciones = new HashSet<Vacaciones>();
+        }
+    
         public int Id_Empleado { get; set; }
 
-        [Display(Name = "Codigo")]
-        [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(4)]
+        [Display(Name ="Codigo del Empleado")]
         public string Codigo_Empleado { get; set; }
 
-        [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50)]
+        [Display(Name ="Nombre")]
         public string Nombre_Empleado { get; set; }
-
-        [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50)]
         public string Apellido { get; set; }
-
-        [DataType(DataType.PhoneNumber)]
-        [StringLength(10)]
         public string Telefono { get; set; }
 
 
+        [Display(Name = "Departamento")]
         public Nullable<int> Id_Depto { get; set; }
+
+
+        [Display(Name = "Cargo")]
         public Nullable<int> Id_Cargo { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 
-        [Display(Name = "Fecha de ingreso")]
+
+        [Display(Name = "Fecha de Ingreso")]
         public DateTime FechaIngreso { get; set; }
-
         public Nullable<decimal> Salario { get; set; }
-
-        [Display(Name ="Activo")]
         public bool Status { get; set; }
-
-        //Aqui debajo debes agregar un public para departamento(Parecido al de cargo)
-        
-        public Departamento Departamento { get; set; }
-
-       //Metodo Cargo 
-        
-        public Cargo Cargo { get; set; }
-        public List<Licencia> Licencias { get; set; }
-        public List<Permiso> Permisos { get; set; }
-        public List<Vacaciones> Vacaciones { get; set; }
-        
+    
+        public virtual Cargo Cargo { get; set; }
+        public virtual Departamento Departamento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Permiso> Permiso { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Licencia> Licencia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Salida_Empleado> Salida_Empleado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vacaciones> Vacaciones { get; set; }
     }
 }

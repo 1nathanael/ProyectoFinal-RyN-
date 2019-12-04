@@ -20,5 +20,7 @@ namespace ProyectoFinal__RyN__.Models
         public Nullable<System.DateTime> Fin_Vacaciones { get; set; }
         public Nullable<int> Año { get; set; }
         public string Comentario { get; set; }
+    
+        public virtual Empleado Empleado { get; set; }
     }
 }

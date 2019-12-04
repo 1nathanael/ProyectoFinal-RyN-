@@ -86,6 +86,42 @@
           <Property Name="Año" Type="int" />
           <Property Name="Comentario" Type="varchar" MaxLength="100" />
         </EntityType>
+        <Association Name="fk_cargo">
+          <End Role="Cargo" Type="Self.Cargo" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="Id_Cargo" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id_Depto" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Depto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_salida">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Salida_Empleado" Type="Self.Salida_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Salida_Empleado">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RecursosHumanosModelStoreContainer">
           <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
@@ -95,6 +131,18 @@
           <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salida_Empleado" EntityType="Self.Salida_Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_cargo" Association="Self.fk_cargo">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_departamento" Association="Self.fk_departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_salida" Association="Self.fk_salida">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Salida_Empleado" EntitySet="Salida_Empleado" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -114,6 +162,12 @@
           <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
           <Property Name="Salario" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cargo" Relationship="RecursosHumanosModel.fk_cargo" FromRole="Empleado" ToRole="Cargo" />
+          <NavigationProperty Name="Departamento" Relationship="RecursosHumanosModel.fk_departamento" FromRole="Empleado" ToRole="Departamento" />
+          <NavigationProperty Name="Permiso" Relationship="RecursosHumanosModel.fk_permiso" FromRole="Empleado" ToRole="Permiso" />
+          <NavigationProperty Name="Licencia" Relationship="RecursosHumanosModel.fk_licencia" FromRole="Empleado" ToRole="Licencia" />
+          <NavigationProperty Name="Salida_Empleado" Relationship="RecursosHumanosModel.fk_salida" FromRole="Empleado" ToRole="Salida_Empleado" />
+          <NavigationProperty Name="Vacaciones" Relationship="RecursosHumanosModel.fk_vacaciones" FromRole="Empleado" ToRole="Vacaciones" />
         </EntityType>
         <EntityContainer Name="RecursosHumanosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
@@ -124,6 +178,30 @@
           <EntitySet Name="Cargo" EntityType="RecursosHumanosModel.Cargo" />
           <EntitySet Name="Licencia" EntityType="RecursosHumanosModel.Licencia" />
           <EntitySet Name="Nomina" EntityType="RecursosHumanosModel.Nomina" />
+          <AssociationSet Name="fk_cargo" Association="RecursosHumanosModel.fk_cargo">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_departamento" Association="RecursosHumanosModel.fk_departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_permiso" Association="RecursosHumanosModel.fk_permiso">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Permiso" EntitySet="Permiso" />
+          </AssociationSet>
+          <AssociationSet Name="fk_licencia" Association="RecursosHumanosModel.fk_licencia">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Licencia" EntitySet="Licencia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_salida" Association="RecursosHumanosModel.fk_salida">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Salida_Empleado" EntitySet="Salida_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vacaciones" Association="RecursosHumanosModel.fk_vacaciones">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Vacaciones" EntitySet="Vacaciones" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Departamento">
           <Key>
@@ -132,6 +210,7 @@
           <Property Name="Id_Depto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo_Depto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Nombre_Depto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="RecursosHumanosModel.fk_departamento" FromRole="Departamento" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Permiso">
           <Key>
@@ -142,6 +221,7 @@
           <Property Name="Inicio_Permiso" Type="DateTime" Precision="3" />
           <Property Name="Fin_Permiso" Type="DateTime" Precision="3" />
           <Property Name="Comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="RecursosHumanosModel.fk_permiso" FromRole="Permiso" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Salida_Empleado">
           <Key>
@@ -152,6 +232,7 @@
           <Property Name="Tipo_Salida" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Motivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Fecha_Salida" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empleado" Relationship="RecursosHumanosModel.fk_salida" FromRole="Salida_Empleado" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Vacaciones">
           <Key>
@@ -163,6 +244,7 @@
           <Property Name="Fin_Vacaciones" Type="DateTime" Precision="3" />
           <Property Name="Año" Type="Int32" />
           <Property Name="Comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="RecursosHumanosModel.fk_vacaciones" FromRole="Vacaciones" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Cargo">
           <Key>
@@ -170,6 +252,7 @@
           </Key>
           <Property Name="Id_Cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Cargo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="RecursosHumanosModel.fk_cargo" FromRole="Cargo" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Licencia">
           <Key>
@@ -181,6 +264,7 @@
           <Property Name="Fin_Licencia" Type="DateTime" Precision="3" />
           <Property Name="Motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Comentario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="RecursosHumanosModel.fk_licencia" FromRole="Licencia" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Nomina">
           <Key>
@@ -191,6 +275,78 @@
           <Property Name="Mes" Type="Int32" />
           <Property Name="MontoTotal" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
+        <Association Name="fk_cargo">
+          <End Type="RecursosHumanosModel.Cargo" Role="Cargo" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="Id_Cargo" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Cargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_departamento">
+          <End Type="RecursosHumanosModel.Departamento" Role="Departamento" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id_Depto" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Depto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_permiso">
+          <End Type="RecursosHumanosModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_licencia">
+          <End Type="RecursosHumanosModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.Licencia" Role="Licencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Licencia">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_salida">
+          <End Type="RecursosHumanosModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.Salida_Empleado" Role="Salida_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Salida_Empleado">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vacaciones">
+          <End Type="RecursosHumanosModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+          <End Type="RecursosHumanosModel.Vacaciones" Role="Vacaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Vacaciones">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

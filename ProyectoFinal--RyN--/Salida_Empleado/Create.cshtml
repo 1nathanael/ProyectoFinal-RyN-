@@ -3,20 +3,20 @@
 @{
     ViewBag.Title = "Create";
 }
-<br />
-<h2>Registrar Salida de Empleado</h2>
 
 
-@using (Html.BeginForm())
+
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-
+        <br />  
+        <h2><u>Registrar Salida de Empleado</u></h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Empleado, "Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Empleado,"Empleado", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Empleado", (IEnumerable<SelectListItem>)ViewBag.Id_Empleado, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Empleado, "", new { @class = "text-danger" })
@@ -24,15 +24,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Tipo_Salida, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tipo_Salida, "Tipo de salida", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Tipo_Salida", new List<SelectListItem>
-               {
-               new SelectListItem{Text = "Renuncia", Value = "Renuncia"},
-               new SelectListItem{Text = "Despido", Value = "Despido"},
-               new SelectListItem{Text = "Desahucio", Value = "Desahucio"}},
-        new { @class = "form-control" })
-                @*@Html.EditorFor(model => model.Tipo_Salida, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("Tipo de salida", new List<SelectListItem>
+                {
+                    new SelectListItem {Text = "Renuncia", Value = "Renuncia"},
+                    new SelectListItem {Text = "Despido", Value = "Despido"},
+                    new SelectListItem {Text = "Desahucio", Value = "Desahucio"}},
+                    new { @class = "form-control" })
+
                 @Html.ValidationMessageFor(model => model.Tipo_Salida, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -48,26 +48,23 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Fecha_Salida, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Fecha_Salida, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Fecha_Salida,"Fecha de Salida", new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Fecha_Salida, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Registrar" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<p>
+<div>
+    @Html.ActionLink("Lista de Salida de Empleados", "Index")
+</div>
 
-    <a class="btn btn-default btn-info" href="~/Salida_Empleado/Index/">
-        Ver Listado
-
-    </a>
-</p>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

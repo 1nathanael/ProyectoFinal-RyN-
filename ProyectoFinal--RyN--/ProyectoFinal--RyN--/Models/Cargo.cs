@@ -15,9 +15,22 @@ namespace ProyectoFinal__RyN__.Models
 
     public partial class Cargo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cargo()
+        {
+            this.Empleado = new HashSet<Empleado>();
+        }
+
+        [Required]
+
+        [Display(Name = "Cargo")]
         public int Id_Cargo { get; set; }
 
-        [Display(Name="Nombre del Cargo")]
+
+        [Display(Name = "Nombre")]
         public string Nombre_Cargo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Empleado> Empleado { get; set; }
     }
 }
