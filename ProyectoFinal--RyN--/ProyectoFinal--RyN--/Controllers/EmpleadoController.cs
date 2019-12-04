@@ -155,7 +155,7 @@ namespace ProyectoFinal__RyN__.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EntradaMesLista(int ano, int mes)
         {
-            var empleados = db.Empleado.Where(x => x.FechaIngreso.Year == ano && x.FechaIngreso.Month == mes).Include(c => c.Cargo).Include(d => d.Departamento)ToList();
+            var empleados = db.Empleado.Where(x => x.FechaIngreso.Year == ano && x.FechaIngreso.Month == mes).Include(c => c.Cargo).Include(d => d.Departamento).ToList();
             if (empleados != null)
             {
                 return View(empleados);
