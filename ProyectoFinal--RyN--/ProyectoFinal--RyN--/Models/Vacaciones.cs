@@ -11,12 +11,26 @@ namespace ProyectoFinal__RyN__.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Vacaciones
     {
+        
         public int Id_vacaciones { get; set; }
+        [Required]
+        [Display(Name = "Empleado")]
         public Nullable<int> Id_Empleado { get; set; }
+
+        [Required]
+        [Display(Name = "Inicio de Vacaciones")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Inicio_Vacaciones { get; set; }
+
+        [Required]
+        [Display(Name = "Fin de Vacaciones")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Fin_Vacaciones { get; set; }
         public Nullable<int> Año { get; set; }
         public string Comentario { get; set; }

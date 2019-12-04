@@ -3,12 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
+<br />  
+<h2>Listado de Vacaciones</h2>
 
-<h2>Index</h2>
-
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -47,11 +47,27 @@
             @Html.DisplayFor(modelItem => item.Comentario)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_vacaciones }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_vacaciones }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_vacaciones })
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id_vacaciones }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id_vacaciones }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id_vacaciones })*@
+            <a class="btn btn-default btn-info" href="~/Vacaciones/Edit/@item.Id_vacaciones" title="Editar">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-default btn-warning" href="~/Vacaciones/Details/@item.Id_vacaciones" title="Detalles">
+                <i class="glyphicon glyphicon-list-alt"></i>
+            </a>
+            <a class="btn btn-default btn-danger" href="~/Vacaciones/Delete/@item.Id_vacaciones" title="Eliminar">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
         </td>
     </tr>
 }
 
 </table>
+<p>
+
+    <a class="btn btn-default btn-success" href="~/Vacaciones/Create/">
+        Registrar Nueva Vacacion
+
+    </a>
+</p>

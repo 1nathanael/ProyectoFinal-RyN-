@@ -38,6 +38,7 @@ namespace ProyectoFinal__RyN__.Controllers
         // GET: Vacaciones/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado");
             return View();
         }
 
@@ -55,6 +56,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", vacaciones.Id_Empleado);
             return View(vacaciones);
         }
 
@@ -70,6 +72,7 @@ namespace ProyectoFinal__RyN__.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", vacaciones.Id_Empleado);
             return View(vacaciones);
         }
 
@@ -86,6 +89,7 @@ namespace ProyectoFinal__RyN__.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Empleado = new SelectList(db.Empleado, "Id_Empleado", "Nombre_Empleado", vacaciones.Id_Empleado);
             return View(vacaciones);
         }
 
