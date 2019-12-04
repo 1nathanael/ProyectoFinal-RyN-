@@ -3,11 +3,11 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
+<br />  
+<h2>Detalle de Nomina</h2>
 
 <div>
-    <h4>Nomina</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,6 +37,14 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Nomina }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    <a class="btn btn-default btn-success" href="~/Nomina/Edit/@Model.Id_Nomina">
+        Editar
+
+    </a>
+
+    <a class="btn btn-default btn-success" href="~/Nomina/Index/">
+        Listado de Nominas
+
+    </a>
 </p>

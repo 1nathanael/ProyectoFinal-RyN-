@@ -4,11 +4,11 @@
     ViewBag.Title = "Listado de nomina";
 }
 
-<h2>Listado de nomina</h2>
+<h2>Listado de Nominas</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Generar Nomina", "HomeNomina", "Nomina")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -35,11 +35,27 @@
             @Html.DisplayFor(modelItem => item.MontoTotal)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Nomina }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Nomina }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Nomina })
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id_Nomina }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id_Nomina }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id_Nomina })*@
+            <a class="btn btn-default btn-info" href="~/Nomina/Edit/@item.Id_Nomina" title="Editar">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-default btn-warning" href="~/Nomina/Details/@item.Id_Nomina" title="Detalles">
+                <i class="glyphicon glyphicon-list-alt"></i>
+            </a>
+            <a class="btn btn-default btn-danger" href="~/Nomina/Delete/@item.Id_Nomina" title="Eliminar">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
         </td>
     </tr>
 }
 
 </table>
+<p>
+
+    <a class="btn btn-default btn-success" href="~/Nomina/HomeNomina">
+      Generar Nomina
+
+    </a>
+</p>
